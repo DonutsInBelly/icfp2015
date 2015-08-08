@@ -1,22 +1,27 @@
 package icfp2015;
 
-/*
- * Hexagon(x,y,full)
- * -Contain x,y coordinates for board; x and y are doubles
- * -full is a boolean: true for Full, False for empty
- */
 public class Hexagon 
 {
-	public boolean pivot;
-	public boolean full;
+	public boolean isPivot;
+	public boolean isFull;
 	public int x;
 	public int y;
 	
-	public Hexagon(double x, double y, Boolean full)
+	/**
+	 * Hexagon(x,y,full)
+	 * -Contain x,y coordinates for board; x and y are ints
+	 * -isFull is a boolean: True for Full, False for empty
+	 * -isPivot is a boolean: True for Being a Pivot, False for Not Pivot
+	 * @param x
+	 * @param y
+	 * @param isFull
+	 * @param isPivot
+	 */
+	public Hexagon(int x, int y, boolean isFull, boolean isPivot)
 	{
-		x = this.x;
-		y = this.y;
-		full = this.full;
-		pivot = false;
+		this.x = x;
+		this.y = y;
+		this.isFull = isFull;
+		this.isPivot = isPivot;
 	}
 }
