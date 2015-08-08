@@ -80,13 +80,13 @@ public class Board {
 			}
 		}
 		int avg = (sum / count);
-		char mov;
+		char mov = ' ';
 		if(avg == middle){
 			return piece;
 		}
 		if(avg < middle){
 			mov = 'r';
-		}else{
+		}else if(avg > middle){
 			mov = 'l';
 		}
 		//Find deepest index
@@ -97,22 +97,66 @@ public class Board {
 			}
 		}
 		//Find key index
-		int key_index;
+		int pivot_index = -1;
 		for(int i = 0; i < t_hex.length; i++){
 			if(t_hex[i].isPivot == true){
-				key_index = i;
+				pivot_index = i;
 				break;
 			}
 		}
-		if(avg != middle){
-			if(mov == 'r'){
-				
+			if(avg != middle){
+				if(mov == 'r'){
+					boolean failed = false;
+					int moves = 0;
+					while(t_hex[pivot_index].x <= middle){
+						for(int i = 0; i <= deep ; i++){
+							if(t_hex[i].x < (width - 1)){
+								t_hex[i].x++;
+							}
+						}
+						moves++;
+						for(int f = 0 ; f < t_hex.length ; f++){
+							if(t_hex[f].y >= width){
+								failed = true;
+							}
+						}
+						if(failed == true){
+							for(int i = 0; i <= deep ; i++){
+								if(t_hex[i].x < (width - 1)){
+									t_hex[i].x--;
+								}
+							}
+						}
+					}
+
+				}
+				if(mov == 'l'){
+					boolean failed = false;
+					int moves = 0;
+					while(t_hex[pivot_index].x >= middle){
+						for(int i = 0; i <= deep ; i++){
+							if( t_hex[i].x > (0)){
+								t_hex[i].x--;
+							}
+						}
+						moves++;
+						for(int f = 0 ; f < t_hex.length ; f++){
+							if(t_hex[f].y < 0){
+								failed = true;
+							}
+						}
+						if(failed == true){
+							for(int i = 0; i <= deep ; i++){
+								if(t_hex[i].x < (0)){
+									t_hex[i].x++;
+								}
+							}
+						}
+					}
+				}
 			}
-			if(mov == 'l'){
-				
-			}
-		}
-		
+			Unit finalLoc = new Unit(t_hex);
+			return finalLoc;
 	}
 	
 	
