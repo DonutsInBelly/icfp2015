@@ -24,4 +24,13 @@ Class Diagram
 			- LegalMoveCheck
 			
 			
+			
+JSONParser							PreGameObject								Board
+----------------------------------------------------------------------------------------
+///1) Setting up the initial state of the board///
+
+Read all the starting filled			
+positions store them into 
+int[row][col]
+
 			 

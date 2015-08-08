@@ -66,7 +66,12 @@ public class Board {
 		return true;
 	}
 	
-	
+	/**
+	 * Will insert new unit into the board from the source
+	 * @param piece
+	 * @return
+	 * 		Centered piece if possible
+	 */
 	public Unit genNewUnit(Unit piece){
 		//retrieve hexagons
 		Hexagon[] t_hex = piece.u;
