@@ -7,14 +7,16 @@ package icfp2015;
  */
 public class Hexagon 
 {
-	public Boolean full;
-	public double x;
-	public double y;
+	public boolean pivot;
+	public boolean full;
+	public int x;
+	public int y;
 	
 	public Hexagon(double x, double y, Boolean full)
 	{
 		x = this.x;
 		y = this.y;
 		full = this.full;
+		pivot = false;
 	}
 }
