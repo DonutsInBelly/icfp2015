@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import org.json.JSONObject;
+import org.json.*;
 
 class Cell
 {
@@ -61,7 +61,40 @@ public class initGame
 		}
 		JSONObject json = new JSONObject(sb.toString());
 		
-		
-		
+		/*
+		 * These lines get values from the JSONObject and put them into
+		 * the initGame object
+		 */
+		this.ID = json.getInt("id");
+		this.width = json.getInt("width");
+		this.height = json.getInt("height");
+		this.sourceLength = json.getInt("sourceLength");
+		JSONArray jsonUnitArray = json.getJSONArray("units");
+		for(int memberIter = 0; memberIter < jsonUnitArray.length()-1; memberIter++)
+		{
+			/*
+			this.incoming[iter].members[iter].x = jsonUnitArray.getJSONObject(iter).getInt("x");
+			this.incoming[iter].members[iter].y = jsonUnitArray.getJSONObject(iter).getInt("y");
+			this.incoming[iter].pivot.x = jsonUnitArray.getJSONObject(iter).getInt("x");
+			this.incoming[iter].pivot.y = jsonUnitArray.getJSONObject(iter).getInt("y");
+			*/
+			JSONObject jsonUnit = jsonUnitArray.getJSONObject(memberIter);
+			JSONArray jsonMemberArray = jsonUnit.getJSONArray("members");
+			JSONObject jsonPivot = jsonUnitArray.getJSONObject(memberIter);
+			for(int cellIter = 0; cellIter < jsonMemberArray.length()-1; cellIter++)
+			{
+				this.incoming[memberIter].members[cellIter].x = jsonMemberArray.getJSONObject(cellIter).getInt("x");
+				this.incoming[memberIter].members[cellIter].y = jsonMemberArray.getJSONObject(cellIter).getInt("y");
+			}
+			this.incoming[memberIter].pivot.x = jsonPivot.getInt("x");
+			this.incoming[memberIter].pivot.y = jsonPivot.getInt("y");
+		}
+		JSONArray jsonFilledArray = json.getJSONArray("filled");
+		for(int fillIter = 0; fillIter < jsonFilledArray.length()-1; fillIter++)
+		{
+			JSONObject jsonFilledCell = jsonFilledArray.getJSONObject(fillIter);
+			this.filled[fillIter].x = jsonFilledCell.getInt("x");
+			this.filled[fillIter].y = jsonFilledCell.getInt("y");
+		}
 	}
 }
