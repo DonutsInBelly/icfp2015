@@ -64,11 +64,12 @@ public class Board {
 		return true;
 	}
 	
-	public boolean genNewUnit(){
-		//Get Coordinates
-		//Check if unit can fit on the board
-		//Attempt to Center the Unit in the avail area
-		return true;
+	public boolean genNewUnit(Unit piece){
+		//retrieve hexagons
+		Hexagon[] t_hex = piece.u;
+		//Find upper hexagons
+		
+		return false;
 	}
 	
 }
