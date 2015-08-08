@@ -1,2 +1,27 @@
-Mechanisms of the game
+Class Diagram
 
+
+			|Hexagon	|						|	Board
+			|+position	|--------------------->>|-----------------------------------------------------											|Board
+			|+filled?	|						|+ int width										|
+												|+ int height										|
+											
+												|+ int id											|
+												|+ Hexagon[][] B									|
+												|---------------------------------------------------|
+												|- Constructor(width, hieght, id , units, arrayFilled)
+												|- addNewUnit()										|
+												|- checkBottomRow()									|
+												-----------------------------------------------------
+			
+
+			Controller
+			-----------												JSonParser
+				
+			- Rotate
+			- Translate
+			- IsLocked
+			- LegalMoveCheck
+			
+			
+			 
