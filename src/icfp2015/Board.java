@@ -5,6 +5,7 @@ public class Board {
 	//Board Dimensional Constraints
 	int width; //number of columns
 	int hieght; //number of rows
+	int middle; //middle column of the board
 	
 	public Hexagon[][] B;
 	
@@ -21,6 +22,7 @@ public class Board {
 	 */
 	public Board(int width , int height, int index, int[] col , int[] row){
 		this.B = new Hexagon[height][width];
+		middle = (col.length / 2);
 		if(false == generate(col, row)){
 			System.out.println("Game failed to start.");
 		}
@@ -44,7 +46,7 @@ public class Board {
 			return false;
 		}
 		for(int i = 0; i < col.length; i++){
-			B[row[i]][col[i]].full = true;
+			B[row[i]][col[i]].isFull = true;
 		}
 		return true;
 	}
@@ -57,19 +59,64 @@ public class Board {
 	 */	
 	public boolean isBottomRowFull(){
 		for(int i = 0; i < this.width; i++){
-			if((B[this.hieght - 1][i].full) == false){
+			if((B[this.hieght - 1][i].isFull) == false){
 				return false;
 			}
 		}
 		return true;
 	}
 	
-	public boolean genNewUnit(Unit piece){
+	
+	public Unit genNewUnit(Unit piece){
 		//retrieve hexagons
 		Hexagon[] t_hex = piece.u;
 		//Find upper hexagons
+		int sum = 0;
+		int count = 0;
+		for(int i = 0 ; i < t_hex.length ; i++){
+			if(t_hex[i].y == 0){
+				sum = sum + t_hex[i].x;
+				count++;
+			}
+		}
+		int avg = (sum / count);
+		char mov;
+		if(avg == middle){
+			return piece;
+		}
+		if(avg < middle){
+			mov = 'r';
+		}else{
+			mov = 'l';
+		}
+		//Find deepest index
+		int deep = 0;
+		for(int i = 0; i < t_hex.length; i++){
+			if(t_hex[i].y > deep){
+				deep = t_hex[i].y;
+			}
+		}
+		//Find key index
+		int key_index;
+		for(int i = 0; i < t_hex.length; i++){
+			if(t_hex[i].isPivot == true){
+				key_index = i;
+				break;
+			}
+		}
+		if(avg != middle){
+			if(mov == 'r'){
+				
+			}
+			if(mov == 'l'){
+				
+			}
+		}
 		
-		return false;
 	}
 	
+	
+	
+	
+		
 }

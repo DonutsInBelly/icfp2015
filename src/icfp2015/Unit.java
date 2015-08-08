@@ -22,7 +22,7 @@ public class Unit {
 			System.out.println("Unit is null or does not exist");
 		}
 		for(int i = 0; i < u.length ; i++){
-			if(u[i].pivot == true){
+			if(u[i].isPivot == true){
 				int[] temp = new int[2];
 				temp[0] = u[i].y; //row
 				temp[1] = u[i].x; //col
