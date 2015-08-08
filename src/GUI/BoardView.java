@@ -7,4 +7,6 @@ public class BoardView {
 	
 	public JFrame BoardWindow;
 	
+	
+	
 }
