@@ -1,0 +1,17 @@
+PreGameObject
+	
+	int ID
+	
+	Unit[] (Array of Units)
+		Unit(x,y)
+	
+	int width
+	
+	int height
+	
+	cell[] (Array of coordinates)
+		(x,y)
+	
+	int sourceLength
+	
+	int[] sourceSeeds

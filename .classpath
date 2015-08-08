@@ -2,5 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/home/carlin/Workspace/icfp2015/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/home/carlin/Workspace/icfp2015/src/json-20141113.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
