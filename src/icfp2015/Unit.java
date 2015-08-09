@@ -1,7 +1,7 @@
 package icfp2015;
 
 public class Unit {
-	Hexagon[] u;
+	public Hexagon[] u;
 	
 	/**
 	 * Unit is a set of hexagons that make a playable piece
