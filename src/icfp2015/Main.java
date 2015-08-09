@@ -9,7 +9,7 @@ import jsonHandler.*;
 public class Main {
 	public static void main(String[] args){
 		//Read the JSON file
-		
+		 
 		//generate the board
 			//Mark all initial hexagons are full
 		
@@ -28,5 +28,7 @@ public class Main {
 		//When no moves left game done
 		
 		//Calculate the score
+		
+		
 	}
 }

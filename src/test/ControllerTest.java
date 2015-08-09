@@ -17,13 +17,15 @@ public class ControllerTest {
 		Hexagon one = new Hexagon(1, 0, false , true);
 		Hexagon two = new Hexagon(3, 0, false , false);
 		Hexagon[] test_hex_array = {one, two};
-		Unit testUnit = new Unit(test_hex_array);
+		Unit testUnit = new Unit(test_hex_array); 
 		System.out.println("Generated New Unit.");
 		
 		//Place New Unit in Board
 		System.out.println("TEST: Add Centered Unit");
 		
 		Unit cUnit = testBoard.centerUnit(testUnit);
+		Board NB = Controller.translate("SE", cUnit, testBoard);
+		
 //		for(int i = 0; i < cUnit.u.length ; i++ ){
 //			System.out.println( "Row , Column : " + cUnit.u[i].x  + " , " + cUnit.u[i].y);
 //		}

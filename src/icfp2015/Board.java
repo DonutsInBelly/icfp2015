@@ -117,10 +117,10 @@ public class Board {
 					}
 				}
 				
-				for(int i = 0; i < thex.length ; i++ ){
+				/*for(int i = 0; i < thex.length ; i++ ){
 					
 					System.out.println( "id = " + i + " : " + "Row , Column : " + thex[i].x  + " , " + thex[i].y);
-				}
+				}*/
 				
 				if(badmotion == true){
 					break;
