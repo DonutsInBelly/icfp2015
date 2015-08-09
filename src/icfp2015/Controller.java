@@ -142,8 +142,37 @@ public class Controller {
 				}
 				return B;
 			
-			case 4:
-				
+			case 4: //SE
+				deep_index = 0;
+				shallow_index = 0;
+				moves = 0;
+				how_deep = 0;
+				for(int i = 0; i < U.u.length ; i++){
+					if(U.u[i].y < shallow_index){
+						shallow_index = U.u[i].y;
+					}
+					if(U.u[i].y > deep_index){
+						deep_index = U.u[i].y;
+					}
+				}
+				failed = false;
+				for(int i = deep_index ; i >= shallow_index ; i--){
+					if(B.B[U.u[i].x - 1][U.u[i].y + 1].isFull == true || ((U.u[i].x - 1) <= (B.width - 1)) || ((U.u[i].y + 1) > (B.hieght - 1))){
+						failed = true;
+					}
+					U.u[i].y = U.u[i].y + 1;
+					U.u[i].x = U.u[i].x + 1;
+				}
+				if(failed == true){
+					for(int i = deep_index ; i >= shallow_index ; i--){
+						U.u[i].x = U.u[i].x - 1;
+						U.u[i].y = U.u[i].y - 1;
+					}
+					for(int i = 0 ; i < U.u.length ; i++){
+						B.B[U.u[i].x][U.u[i].y].isFull = true;
+					}
+				}
+
 				return B;
 			
 			default: System.out.println("Not a valid choice");
