@@ -69,6 +69,11 @@ public class initGame
 		this.width = json.getInt("width");
 		this.height = json.getInt("height");
 		this.sourceLength = json.getInt("sourceLength");
+		/*
+		 * This block parses the Array of Units that spawn
+		 * They parse the Unit Array and puts the Members Array into a JSONArray
+		 * and the Pivot into a JSONObject
+		 */
 		JSONArray jsonUnitArray = json.getJSONArray("units");
 		for(int memberIter = 0; memberIter < jsonUnitArray.length()-1; memberIter++)
 		{
@@ -89,12 +94,24 @@ public class initGame
 			this.incoming[memberIter].pivot.x = jsonPivot.getInt("x");
 			this.incoming[memberIter].pivot.y = jsonPivot.getInt("y");
 		}
+		/*
+		 * This block turns the FilledArray into a JSONArray
+		 * then puts the x and y values from the JSONArray into the filled array in initGame
+		 */
 		JSONArray jsonFilledArray = json.getJSONArray("filled");
 		for(int fillIter = 0; fillIter < jsonFilledArray.length()-1; fillIter++)
 		{
 			JSONObject jsonFilledCell = jsonFilledArray.getJSONObject(fillIter);
 			this.filled[fillIter].x = jsonFilledCell.getInt("x");
 			this.filled[fillIter].y = jsonFilledCell.getInt("y");
+		}
+		/*
+		 * This parses JSON to a sourceSeeds Int Array
+		 */
+		JSONArray jsonSourceSeeds = json.getJSONArray("sourceSeeds");
+		for(int sourceSeedsIter = 0; sourceSeedsIter < jsonSourceSeeds.length()-1; sourceSeedsIter++)
+		{
+			this.sourceSeeds[sourceSeedsIter] = jsonSourceSeeds.getInt(sourceSeedsIter);
 		}
 	}
 }
