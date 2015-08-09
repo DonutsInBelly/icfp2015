@@ -27,24 +27,24 @@ public class jsonTest
 		System.out.println("Game Height: " + game.height);
 		System.out.println("Game sourceLength: " + game.sourceLength);
 		
-		for(int unitIter = 0; unitIter < game.incoming.length-1; unitIter++)
+		for(int unitIter = 0; unitIter <= game.incoming.length-1; unitIter++)
 		{
 			Unit currentUnit = game.incoming[unitIter];
 			int memberLength = game.incoming[unitIter].getMemberLength();
 			System.out.println("Unit Pivot: (" + currentUnit.getPivotX() + "," + currentUnit.getPivotY() + ")");
-			for(int memberIter = 0; memberIter < memberLength-1; memberIter++)
+			for(int memberIter = 0; memberIter <= memberLength-1; memberIter++)
 			{
 				System.out.println("Member " + memberIter + ": (" + currentUnit.getMemberX(memberIter) + "," + currentUnit.getMemberY(memberIter) + ")");
 			}
 		}
-		for(int fillIter = 0; fillIter < game.filled.length-1; fillIter++)
+		for(int fillIter = 0; fillIter <= game.filled.length-1; fillIter++)
 		{
 			int x = game.filled[fillIter].x;
 			int y = game.filled[fillIter].y;
 			System.out.println("Filled Cell: (" + x + "," + y + ")");
 		}
 		System.out.println("sourceSeed: [ ");
-		for(int seedIter = 0; seedIter < game.sourceSeeds.length-1; seedIter++)
+		for(int seedIter = 0; seedIter <= game.sourceSeeds.length-1; seedIter++)
 		{
 			System.out.print(game.sourceSeeds[seedIter] + ", ");
 		}

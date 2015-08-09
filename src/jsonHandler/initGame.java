@@ -49,7 +49,8 @@ public class initGame
 		{
 			e.printStackTrace();
 		}
-		JSONObject json = new JSONObject(sb.toString());
+		JSONObject json = new 
+				JSONObject(sb.toString());
 		
 		/*
 		 * These lines get values from the JSONObject and put them into
@@ -66,7 +67,7 @@ public class initGame
 		 */
 		JSONArray jsonUnitArray = json.getJSONArray("units");
 		this.incoming = new Unit[jsonUnitArray.length()];
-		for(int memberIter = 0; memberIter < jsonUnitArray.length()-1; memberIter++)
+		for(int memberIter = 0; memberIter <= jsonUnitArray.length()-1; memberIter++)
 		{
 			/*
 			this.incoming[iter].members[iter].x = jsonUnitArray.getJSONObject(iter).getInt("x");
@@ -84,7 +85,7 @@ public class initGame
 			
 			this.incoming[memberIter] = new Unit();
 			this.incoming[memberIter].members = new Cell[jsonMemberArray.length()];
-			for(int cellIter = 0; cellIter < jsonMemberArray.length()-1; cellIter++)
+			for(int cellIter = 0; cellIter <= jsonMemberArray.length()-1; cellIter++)
 			{
 				this.incoming[memberIter].members[cellIter] = new Cell();
 				this.incoming[memberIter].members[cellIter].x = jsonMemberArray.getJSONObject(cellIter).getInt("x");
@@ -99,7 +100,8 @@ public class initGame
 		 * then puts the x and y values from the JSONArray into the filled array in initGame
 		 */
 		JSONArray jsonFilledArray = json.getJSONArray("filled");
-		for(int fillIter = 0; fillIter < jsonFilledArray.length()-1; fillIter++)
+		this.filled = new Cell[jsonFilledArray.length()];
+		for(int fillIter = 0; fillIter <= jsonFilledArray.length()-1; fillIter++)
 		{
 			JSONObject jsonFilledCell = jsonFilledArray.getJSONObject(fillIter);
 			this.filled[fillIter].x = jsonFilledCell.getInt("x");
@@ -109,9 +111,11 @@ public class initGame
 		 * This parses JSON to a sourceSeeds Int Array
 		 */
 		JSONArray jsonSourceSeeds = json.getJSONArray("sourceSeeds");
-		for(int sourceSeedsIter = 0; sourceSeedsIter < jsonSourceSeeds.length()-1; sourceSeedsIter++)
+		this.sourceSeeds = new int[jsonSourceSeeds.length()];
+		for(int sourceSeedsIter = 0; sourceSeedsIter <= jsonSourceSeeds.length()-1; sourceSeedsIter++)
 		{
-			this.sourceSeeds[sourceSeedsIter] = jsonSourceSeeds.getInt(sourceSeedsIter);
+			//System.out.println("SourceSeeds: " + jsonSourceSeeds.optInt(sourceSeedsIter));
+			this.sourceSeeds[sourceSeedsIter] = jsonSourceSeeds.optInt(sourceSeedsIter);
 		}
 	}
 }
