@@ -6,7 +6,7 @@ public class Controller {
 		
 	}
 	
-	public static Board translate(String dir , Unit U, Board B){
+	public static Unit translate(String dir , Unit U, Board B){
 		String[] choices = { "E" , "W" , "SW" , "SE"};
 		
 		
@@ -47,7 +47,7 @@ public class Controller {
 				
 				System.out.println( "id = " + i + " : " + "Row , Column : " + U.u[i].x  + " , " + U.u[i].y);
 			}
-			return B;
+			return U;
 		}
 		
 		if(dir.equals("W")){
@@ -80,11 +80,11 @@ public class Controller {
 				
 				System.out.println( "id = " + i + " : " + "Row , Column : " + U.u[i].x  + " , " + U.u[i].y);
 			}
-			return B;
+			return U;
 		}
 		
 		if(dir.equals("SW")){
-			System.out.println("Moving West!");
+			System.out.println("Moving South West!");
 			for(int i = 0; i < U.u.length ; i++){
 				U.u[i].x--;
 				U.u[i].y++;
@@ -115,11 +115,11 @@ public class Controller {
 				
 				System.out.println( "id = " + i + " : " + "Row , Column : " + U.u[i].x  + " , " + U.u[i].y);
 			}
-			return B;
+			return U;
 		}
 		
 		if(dir.equals("SE")){
-			System.out.println("Moving West!");
+			System.out.println("Moving South East!");
 			for(int i = 0; i < U.u.length ; i++){
 				U.u[i].x++;
 				U.u[i].y++;
@@ -150,10 +150,10 @@ public class Controller {
 				
 				System.out.println( "id = " + i + " : " + "Row , Column : " + U.u[i].x  + " , " + U.u[i].y);
 			}
-			return B;
+			return U;
 		}
 
 
-		return B;
+		return U;
 	}
 }

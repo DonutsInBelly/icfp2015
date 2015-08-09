@@ -24,7 +24,8 @@ public class ControllerTest {
 		System.out.println("TEST: Add Centered Unit");
 		
 		Unit cUnit = testBoard.centerUnit(testUnit);
-		Board NB = Controller.translate("SE", cUnit, testBoard);
+		Unit NU = Controller.translate("SE", cUnit, testBoard);
+		
 		
 //		for(int i = 0; i < cUnit.u.length ; i++ ){
 //			System.out.println( "Row , Column : " + cUnit.u[i].x  + " , " + cUnit.u[i].y);
