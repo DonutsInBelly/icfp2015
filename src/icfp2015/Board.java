@@ -22,7 +22,13 @@ public class Board {
 	 */
 	public Board(int width , int height, int index, int[] col , int[] row){
 		this.B = new Hexagon[height][width];
-		middle = (col.length / 2);
+		for(int i = 0 ; i < height; i++){
+			for(int j = 0; j < width ; j++){
+				this.B[i][j] = new Hexagon(i , j , false, false);
+			}
+		}
+		middle = ((width / 2));
+		
 		if(false == generate(col, row)){
 			System.out.println("Game failed to start.");
 		}
@@ -48,6 +54,7 @@ public class Board {
 		for(int i = 0; i < col.length; i++){
 			B[row[i]][col[i]].isFull = true;
 		}
+		System.out.println("Initial Board: Generate Successful");
 		return true;
 	}
 	
@@ -64,6 +71,68 @@ public class Board {
 			}
 		}
 		return true;
+	}
+	
+	public Unit centerUnit(Unit piece){
+		Hexagon[] thex = piece.u;
+		int pivotindex = -1;
+		for(int i = 0; i < thex.length ; i++){
+			if(thex[i].isPivot == true){
+				pivotindex = i;
+				break;
+			}
+		}
+		System.out.println("The pivot index is : " + pivotindex);
+		System.out.println("The pivot is at : " + thex[pivotindex].x);
+		System.out.println("The middle of the board is:  " +  middle);
+		
+		boolean badmotion = false;
+		if(thex[pivotindex].x < middle){
+			System.out.println("The pivot is less then the middle");
+			int iter = 0;
+			while((thex[pivotindex].x < middle)){
+				for(int i = 0; i < thex.length ; i++){
+					thex[i].x++;
+				}
+				for(int i = 0; i < B.length ; i++){
+					for(int j = 0; j < B[i].length; j++){
+						for(int k = 0 ; k < thex.length ; k++){
+							if(B[i][j].isFull == true && B[i][j].x == thex[k].x && B[i][j].y == thex[k].y){
+								badmotion = true;
+								break;
+							}
+						}
+						if(badmotion == true){
+							break;
+						}
+					}
+					if(badmotion == true){
+						break;
+					}
+				}
+				
+				if(badmotion == true){
+					for(int i = 0; i < thex.length ; i++){
+						thex[i].x--;
+					}
+				}
+				
+				for(int i = 0; i < thex.length ; i++ ){
+					
+					System.out.println( "id = " + i + " : " + "Row , Column : " + thex[i].x  + " , " + thex[i].y);
+				}
+				
+				if(badmotion == true){
+					break;
+				}
+				
+				iter++;
+			}
+		}
+		
+		
+		
+		return new Unit(thex);
 	}
 	
 	/**
@@ -178,13 +247,16 @@ public class Board {
 		
 		//check if new unit can be placed
 		piece = genNewUnit(piece);
+		boolean flag = false;
 		for(int i = 0; i < piece.u.length ; i++){
 			if(B[piece.u[i].y][piece.u[i].x].isFull == true){
-				return true;
+				flag = false;
+				continue;
 			}
+			flag = true;
 		}
 		//Lock in the piece and set hexagons to full
-		return false;
+		return flag;
 	}
 	
 	
