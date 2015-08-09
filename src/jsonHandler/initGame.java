@@ -8,17 +8,7 @@ import java.io.IOException;
 
 import org.json.*;
 
-class Cell
-{
-	int x;
-	int y;
-}
 
-class Unit
-{
-	Cell[] members;
-	Cell pivot;
-}
 
 public class initGame 
 {
