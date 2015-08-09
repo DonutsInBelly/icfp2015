@@ -65,6 +65,7 @@ public class initGame
 		 * and the Pivot into a JSONObject
 		 */
 		JSONArray jsonUnitArray = json.getJSONArray("units");
+		this.incoming = new Unit[jsonUnitArray.length()];
 		for(int memberIter = 0; memberIter < jsonUnitArray.length()-1; memberIter++)
 		{
 			/*
@@ -75,12 +76,21 @@ public class initGame
 			*/
 			JSONObject jsonUnit = jsonUnitArray.getJSONObject(memberIter);
 			JSONArray jsonMemberArray = jsonUnit.getJSONArray("members");
-			JSONObject jsonPivot = jsonUnitArray.getJSONObject(memberIter);
+			JSONObject jsonPivot = jsonUnit.getJSONObject("pivot");
+			
+			/*System.out.println("Keys: " + jsonUnit.keySet());
+			System.out.println("PivotKeys: " + jsonPivot.keySet());
+			System.out.println("Pivot: (" + jsonPivot.getInt("x") + "," + jsonPivot.getInt("y") + ")");*/
+			
+			this.incoming[memberIter] = new Unit();
+			this.incoming[memberIter].members = new Cell[jsonMemberArray.length()];
 			for(int cellIter = 0; cellIter < jsonMemberArray.length()-1; cellIter++)
 			{
+				this.incoming[memberIter].members[cellIter] = new Cell();
 				this.incoming[memberIter].members[cellIter].x = jsonMemberArray.getJSONObject(cellIter).getInt("x");
 				this.incoming[memberIter].members[cellIter].y = jsonMemberArray.getJSONObject(cellIter).getInt("y");
 			}
+			this.incoming[memberIter].pivot = new Cell();
 			this.incoming[memberIter].pivot.x = jsonPivot.getInt("x");
 			this.incoming[memberIter].pivot.y = jsonPivot.getInt("y");
 		}

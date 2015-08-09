@@ -13,10 +13,14 @@ public class jsonTest
 	{
 		String jsonString;
 		File json;
-		Scanner scan = new Scanner(System.in);
-		System.out.println("Enter File Path: ");
-		jsonString = scan.next();
-		json = new File(jsonString);
+		//Scanner scan = new Scanner(System.in);
+		do
+		{
+			System.out.println("Enter File Path: /home/carlin/Workspace/icfp2015/src/problems/problem_0.json");
+			jsonString = "/home/carlin/Workspace/icfp2015/src/problems/problem_0.json";
+			json = new File(jsonString);
+		} while(!json.exists());
+		
 		initGame game = new initGame(json);
 		System.out.println("Game ID: " + game.ID);
 		System.out.println("Game Width: " + game.width);
@@ -33,10 +37,19 @@ public class jsonTest
 				System.out.println("Member " + memberIter + ": (" + currentUnit.getMemberX(memberIter) + "," + currentUnit.getMemberY(memberIter) + ")");
 			}
 		}
-		for(int fillIter = 0; fillIter < game.filled.length; fillIter++)
+		for(int fillIter = 0; fillIter < game.filled.length-1; fillIter++)
 		{
-			
+			int x = game.filled[fillIter].x;
+			int y = game.filled[fillIter].y;
+			System.out.println("Filled Cell: (" + x + "," + y + ")");
 		}
+		System.out.println("sourceSeed: [ ");
+		for(int seedIter = 0; seedIter < game.sourceSeeds.length-1; seedIter++)
+		{
+			System.out.print(game.sourceSeeds[seedIter] + ", ");
+		}
+		System.out.print("]");
+		//scan.close();
 	}
 	
 }
