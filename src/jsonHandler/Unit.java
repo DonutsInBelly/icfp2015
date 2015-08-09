@@ -26,8 +26,3 @@ public class Unit
 		return this.members.length;
 	}
 }
-class Cell
-{
-	public int x;
-	public int y;
-}

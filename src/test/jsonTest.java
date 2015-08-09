@@ -33,6 +33,10 @@ public class jsonTest
 				System.out.println("Member " + memberIter + ": (" + currentUnit.getMemberX(memberIter) + "," + currentUnit.getMemberY(memberIter) + ")");
 			}
 		}
+		for(int fillIter = 0; fillIter < game.filled.length; fillIter++)
+		{
+			
+		}
 	}
 	
 }
