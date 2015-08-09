@@ -12,7 +12,7 @@ public class Main {
 		 
 		//generate the board
 			//Mark all initial hexagons are full
-		
+			
 			//Queue up future pieces
 		
 			//Read in the first piece
