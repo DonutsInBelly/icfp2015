@@ -11,7 +11,7 @@ public class ControllerTest {
 		int[] test_xVals = {8,7};
 		int[] test_yVals = {8,7};
 		System.out.println("TEST: generate new Board");
-		Board testBoard = new Board(testWidth, testHeight, index, test_yVals, test_xVals);
+		Board testBoard = new Board(testWidth, testHeight, test_yVals, test_xVals);
 		
 		//Generate New Unit
 		Hexagon one = new Hexagon(1, 0, false , true);

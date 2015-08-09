@@ -20,7 +20,7 @@ public class Board {
 	 * @param row
 	 * 		array containing all the row components of the filled hexagons
 	 */
-	public Board(int width , int height, int index, int[] col , int[] row){
+	public Board(int width , int height, int[] col , int[] row){
 		this.B = new Hexagon[height][width];
 		for(int i = 0 ; i < height; i++){
 			for(int j = 0; j < width ; j++){
