@@ -8,6 +8,7 @@ public class BoardView extends JFrame {
 	
 	
 	public BoardView(){
+		super();
 		this.setVisible(true);
 		this.setResizable(true);
 		this.setTitle("ICFP Game");
