@@ -163,8 +163,29 @@ public class Board {
 			Unit finalLoc = new Unit(t_hex);
 			return finalLoc;
 	}
-	
-	
+	/**
+	 * Will check if game is over by determining if any more 
+	 * units are left to place or if unit cannot be centered on the board
+	 * @param piece
+	 * 		unit attempting to be placed
+	 * @return
+	 * 		TRUE - if game is over
+	 * 		FALSE - if game is not over
+	 */
+	//TODO: Check queue for any more pieces
+	public boolean isGameOver(Unit piece){
+		//check if any new units left
+		
+		//check if new unit can be placed
+		piece = genNewUnit(piece);
+		for(int i = 0; i < piece.u.length ; i++){
+			if(B[piece.u[i].y][piece.u[i].x].isFull == true){
+				return true;
+			}
+		}
+		//Lock in the piece and set hexagons to full
+		return false;
+	}
 	
 	
 		
