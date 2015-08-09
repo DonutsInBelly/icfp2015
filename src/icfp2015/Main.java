@@ -1,4 +1,6 @@
 package icfp2015;
+import java.io.*;
+
 import jsonHandler.*;
 /**
  * @author Carlin Au
@@ -7,17 +9,24 @@ import jsonHandler.*;
  *icpf competition
  */
 public class Main {
-	public static void main(String[] args){
+	public static void main(String[] args) throws FileNotFoundException{
 		//Read the JSON file
-		 
+		File json = new File(args[1]);
+		initGame gameInitState = new initGame(json);
 		//generate the board
-			//Mark all initial hexagons are full
-			
+		int[] xArray = new int[gameInitState.filled.length];
+		int[] yArray = new int[gameInitState.filled.length];
+		for(int coorIter = 0; coorIter < gameInitState.filled.length; coorIter++)
+		{
+			xArray[coorIter] = gameInitState.filled[coorIter].x;
+			yArray[coorIter] = gameInitState.filled[coorIter].y;
+		}
+		Board theBoard = new Board(gameInitState.width, gameInitState.height, xArray, yArray);
 			//Queue up future pieces
 		
 			//Read in the first piece
 		
-		//While moves still availible keep playing
+		//While moves still available keep playing
 			//Create game over flag
 		
 			//Get new piece

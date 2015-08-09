@@ -1,5 +1,15 @@
 package icfp2015;
 
-public class GameState {
+import jsonHandler.*;
 
+public class GameState 
+{
+	public boolean isOver;
+	public int ID;
+	public int boardWidth;
+	public int boardHeight;
+	public int sourceLength;
+	public Unit[] incoming;
+	public Cell[] filled;
+	public Board theBoard;
 }
